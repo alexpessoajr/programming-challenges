@@ -9,7 +9,7 @@ int main (void) {
   
   scanf("%[^\n]s", s);
   
-  for (int i = 0; i <= strlen(s); i++) {
+  for (int i = 0; i < strlen(s); i++) {
     if (s[i] == 'H' || s[i] == 'Q' || s[i] == '9') {
       output = true;
       break;
