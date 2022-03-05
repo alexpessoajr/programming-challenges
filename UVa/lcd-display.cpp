@@ -3,60 +3,25 @@
 
 using namespace std;
 
-void repeat_char(char c, int times) {
+void repeat_char(char c, int times, bool space_around = false) {
+  if (space_around) cout << ' ';
   while (times-- > 0) cout << c;
+  if (space_around) cout << ' ';
 }
 
-void print_row(int digit, int row, int size) {
-  if (row == 0) { // top
-    cout << " ";
-      if (digit == 1 || digit == 4) {
-        repeat_char(' ', size);
-      } else {
-        repeat_char('-', size);
-      }
-    cout << " ";
-  } else if (row == size + 1) { // mid
-    cout << " ";
-      if (digit == 1 || digit == 7 || digit == 0) {
-        repeat_char(' ', size);
-      } else {
-        repeat_char('-', size);
-      }
-    cout << " ";
-  } else if (row == (size + 1) * 2) { // bottom
-    cout << " ";
-      if (digit == 1 || digit == 7 || digit == 4) {
-        repeat_char(' ', size);
-      } else {
-        repeat_char('-', size);
-      }
-    cout << " ";
-  } else {
+void print_row(int d, int row, int size) {
+  if (row == 0) repeat_char((d == 1 || d == 4) ? ' ' : '-', size, true);
+  else if (row == size + 1) repeat_char((d == 1 || d == 7 || d == 0) ? ' ' : '-', size, true);
+  else if (row == (size + 1) * 2) repeat_char((d == 1 || d == 7 || d == 4) ? ' ' : '-', size, true);
+  else {
     if (row < size + 1) {
-      if (digit == 1 || digit == 2 || digit == 3 || digit == 7) {
-        cout << " ";
-      } else {
-        cout << "|";
-      }
+      cout << ((d == 1 || d == 2 || d == 3 || d == 7) ? ' ' : '|');
       repeat_char(' ', size);
-      if (digit == 5 || digit == 6) {
-        cout << " ";
-      } else {
-        cout << "|";
-      }
+      cout << ((d == 5 || d == 6) ? ' ' : '|');
     } else {
-      if (digit == 1 || digit == 3 || digit == 4 || digit == 5 || digit == 7 || digit == 9) {
-        cout << " ";
-      } else {
-        cout << "|";
-      }
+      cout << ((d == 1 || d == 3 || d == 4 || d == 5 || d == 7 || d == 9) ? ' ' : '|');
       repeat_char(' ', size);
-      if (digit == 2) {
-        cout << " ";
-      } else {
-        cout << "|";
-      }
+      cout << ((d == 2) ? ' ' : '|');
     }
   }
 }
