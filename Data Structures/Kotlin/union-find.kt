@@ -23,10 +23,8 @@ class UnionFind {
   fun isConnected(a: Int, b: Int): Boolean = find(a) == find(b)
 
   private fun find(x: Int): Int = if (parent[x] == x) x else {
-    find(parent[x]).let {
-      it.also {
-        parent[x] = it
-      }
+    find(parent[x]).also {
+      parent[x] = it
     }
   }
 }
