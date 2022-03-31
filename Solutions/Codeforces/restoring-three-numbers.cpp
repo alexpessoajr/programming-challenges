@@ -15,22 +15,10 @@ int main() {
 
   sort(v.begin(), v.end());
 
-  int a, b, c, d = v[3];
-
-  for (int i = 0; i < 3 && !solved; i++) {
-    c = d - v[i];
-    for (int j = 0; j < 3 && !solved; j++) {
-      if (j == i) continue;
-      a = v[j] - c;
-      for (int k = 0; k < 3 && !solved; k++) {
-        if (k == j || j == i) continue;
-        b = v[k] - c;
-        if (a + b + c == d) {
-          solved = true;
-        }
-      }
-    }
-  }
+  int d = v[3];
+  int a = d - v[0];
+  int b = d - v[1];
+  int c = d - v[2];
 
   cout << a << " " << b << " " << c << endl;
 
